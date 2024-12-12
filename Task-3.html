@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK 3</title>
+    <style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table, th, td 
+        {
+            border: 1px solid black;
+        }
+
+        td, th 
+        {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="statsTable">
+        <tr>
+            <th>Месяц</th>
+            <th>Отдел 1</th>
+            <th>Отдел 2</th>
+        </tr>
+        <tr>
+            <td>Январь</td>
+            <td>50</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>Февраль</td>
+            <td>60</td>
+            <td>140</td>
+        </tr>
+        <tr>
+            <td>Март</td>
+            <td>125</td>
+            <td>115</td>
+        </tr>
+        <tr>
+            <td>Апрель</td>
+            <td>87</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Март</td>
+            <td>95</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Июнь</td>
+            <td>115</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Июль</td>
+            <td>125</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <th>Итого</th>
+            <th id="totalFirst"></th>
+            <th id="totalSecond"></th>
+        </tr>
+    </table>
+
+    <div id="resultMessage"></div>
+
+    <script>
+
+        let totalFirst = document.querySelector("#totalFirst");
+        let totalSecond = document.querySelector("#totalSecond");
+        let table = document.querySelector("#statsTable");
+
+        let sumFirst = 0;
+        let sumSecond = 0;
+
+        for (let i = 1; i < table.rows.length - 1; i++)
+         {
+            let row = table.rows[i];
+            sumFirst += parseInt(row.cells[1].textContent);
+            sumSecond += parseInt(row.cells[2].textContent);
+        }
+
+        totalFirst.textContent = sumFirst;
+        totalSecond.textContent = sumSecond;
+
+        let resultMessage = document.querySelector("#resultMessage");
+
+        if (sumFirst > sumSecond) 
+        {
+            resultMessage.textContent = "Отдел 1 сделал больше продаж";
+        } 
+
+        else if (sumFirst < sumSecond)
+        {
+            resultMessage.textContent = "Отдел 2 сделал больше продаж";
+        } 
+
+        else 
+        {
+            resultMessage.textContent = "Оба отдела сделали одинаково";
+        }
+    </script>
+</body>
+</html>
